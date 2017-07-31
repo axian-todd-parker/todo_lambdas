@@ -1,0 +1,113 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: items
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+# you can overwrite defaults here
+#  stage: dev
+  region: us-west-2
+  memorySize: 128
+  timeout: 2
+  versionFunctions: false
+
+# you can add statements to the Lambda function's IAM Role here
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:us-west-2:*:*"
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+# you can add packaging information here
+#package:
+#  include:
+#    - include-me.js
+#    - include-me-dir/**
+#  exclude:
+#    - exclude-me.js
+#    - exclude-me-dir/**
+
+functions:
+  getItems:
+    handler: handler.getItems
+    events:
+      - http:
+          path: items
+          method: get
+          cors: true
+  createItem:
+    handler: handler.saveItem
+    events:
+      - http: 
+          path: items
+          method: post
+          cors: true
+  deleteItem:
+    handler: handler.deleteItem
+    events:
+      - http: 
+          path: items/{uid}
+          method: delete
+          cors: true
+  
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+resources:
+  Resources:
+    ItemsDB:
+      Type: AWS::DynamoDB::Table
+      DeletionPolicy: Delete
+      Properties:
+        TableName: item
+        AttributeDefinitions:
+          - AttributeName: uid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: uid
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+    
+    seed:
+      test:
+        sources:
+          - table: item
+            sources: [./test-items.json]

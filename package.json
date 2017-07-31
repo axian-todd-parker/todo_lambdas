@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "serverless": "^1.17.0",
+    "serverless-dynamodb-local": "^0.2.22",
+    "serverless-offline": "^3.15.0"
+  },
+  "dependencies": {
+    "serverless-dynamodb-client": "0.0.2"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/serverless offline start -r us-west-2 --noTimeout",
+    "debug": "export SLS_DEBUG=* && node --inspect=5858 node_modules/.bin/serverless offline start -r us-west-2 --noTimeout",
+    "test": "mocha"
+  }
+}
