@@ -6,4 +6,4 @@ phases:
       - npm install
 artifacts:
   files:
-    - handler.fs
+    - handler.js
