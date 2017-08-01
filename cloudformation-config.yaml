@@ -57,11 +57,12 @@ Resources:
           Properties:
             Path: /items/{uid}
             Method: delete
-  Item:
+  item:
     Type: AWS::Serverless::SimpleTable
     Properties:
-      PrimaryKey: uid
-      Type: String
-    ProvisionedThroughput:
-      ReadCapacityUnits: 1
-      WriteCapacityUnits: 1
+      PrimaryKey:
+        Name: uid
+        Type: String
+      ProvisionedThroughput:
+         ReadCapacityUnits: 1
+         WriteCapacityUnits: 1
