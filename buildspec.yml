@@ -7,3 +7,4 @@ phases:
 artifacts:
   files:
     - handler.js
+    - cloudformation-config.json
