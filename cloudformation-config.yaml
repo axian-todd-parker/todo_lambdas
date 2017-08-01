@@ -1,5 +1,10 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
+Parameters:
+  BucketName:
+    Type: String
+  CodeKey:
+    Type: String
 Resources:
   GetFunction:
     Type: 'AWS::Serverless::Function'
@@ -8,7 +13,9 @@ Resources:
       Runtime: nodejs6.10
       Timeout: 10
       MemorySize: 128
-      CodeUri: 
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref CodeKey
       Policies: AmazonDynamoDBReadOnlyAccess
       Events:
         GetItems:
@@ -24,7 +31,9 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Timeout: 10
       MemorySize: 128
-      CodeUri: 
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref CodeKey
       Events:
         PutItems:
           Type: Api
@@ -39,7 +48,9 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Timeout: 10
       MemorySize: 128
-      CodeUri: 
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref CodeKey
       Events:
         DeleteItems:
           Type: Api
