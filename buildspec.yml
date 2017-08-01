@@ -4,7 +4,7 @@ phases:
   pre_build:
     commands:
       - npm install
+      - aws cloudformation package --template /cloudformation-config.yaml --s3-bucket todo-app.cloudformation-template --output-templage-file packaged-template.yaml
 artifacts:
   files:
     - handler.js
-    - cloudformation-config.yml
