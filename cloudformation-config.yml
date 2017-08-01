@@ -7,7 +7,7 @@ Resources:
       Handler: handler.getItems
       Runtime: nodejs6.10
       Policies: AmazonDynamoDBFullAccess
-      CodeUri: ./
+      CodeUri: s3:codepipeline-us-west-2-295798866908/handler.js
       Events:
         GetItems:
           Type: Api
@@ -20,7 +20,7 @@ Resources:
       Handler: handler.saveItem
       Runtime: nodejs6.10
       Policies: AmazonDynamoDBFullAccess
-      CodeUri: ./
+      CodeUri: ./handler.js
       Events:
         PutItems:
           Type: Api
@@ -33,7 +33,7 @@ Resources:
       Handler: handler.deleteItem
       Runtime: nodejs6.10
       Policies: AmazonDynamoDBFullAccess
-      CodeUri: ./
+      CodeUri: ./handler.js
       Events:
         DeleteItems:
           Type: Api
