@@ -8,7 +8,7 @@ Resources:
       Runtime: nodejs6.10
       Timeout: 10
       MemorySize: 128
-      CodeUri: ./
+      CodeUri: 
       Policies: AmazonDynamoDBReadOnlyAccess
       Events:
         GetItems:
@@ -24,7 +24,7 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Timeout: 10
       MemorySize: 128
-      CodeUri: ./
+      CodeUri: 
       Events:
         PutItems:
           Type: Api
@@ -39,7 +39,7 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Timeout: 10
       MemorySize: 128
-      CodeUri: ./
+      CodeUri: 
       Events:
         DeleteItems:
           Type: Api
