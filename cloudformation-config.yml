@@ -7,12 +7,12 @@ Resources:
       Handler: handler.getItems
       Runtime: nodejs6.10
       Policies: AmazonDynamoDBFullAccess
-      CodeUri: s3://axian-ld-todd-blog/todo_lambdas.artifacts.zip
+      CodeUri: ./
       Events:
         GetItems:
           Type: Api
           Properties:
-            Path: "/items/"
+            Path: /items/
             Method: get
   SaveItemFunction:
     Type: AWS::Serverless::Function
@@ -20,12 +20,12 @@ Resources:
       Handler: handler.saveItem
       Runtime: nodejs6.10
       Policies: AmazonDynamoDBFullAccess
-      CodeUri: s3://axian-ld-todd-blog/todo_lambdas.artifacts.zip
+      CodeUri: ./
       Events:
-        GetItems:
+        PutItems:
           Type: Api
           Properties:
-            Path: "/items/"
+            Path: /items/
             Method: put
   DeleteItemFunction:
     Type: AWS::Serverless::Function
@@ -33,14 +33,14 @@ Resources:
       Handler: handler.deleteItem
       Runtime: nodejs6.10
       Policies: AmazonDynamoDBFullAccess
-      CodeUri: s3://axian-ld-todd-blog/todo_lambdas.artifacts.zip
+      CodeUri: ./
       Events:
-        GetItems:
+        DeleteItems:
           Type: Api
           Properties:
-            Path: "/items/{uid}"
+            Path: /items/{uid}
             Method: delete
-  item:
+  Item:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey: uid
