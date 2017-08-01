@@ -1,21 +1,22 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Resources:
-  GetItemsFunction:
+  GetFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: handler.getItems
       Runtime: nodejs6.10
       Timeout: 10
       MemorySize: 128
-      Policies: AmazonDynamoDBFullAccess
+      CodeUri: ./
+      Policies: AmazonDynamoDBReadOnlyAccess
       Events:
         GetItems:
           Type: Api
           Properties:
-            Path: /items/
+            Path: /items
             Method: get
-  SaveItemFunction:
+  SaveFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: handler.saveItem
@@ -23,13 +24,14 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Timeout: 10
       MemorySize: 128
+      CodeUri: ./
       Events:
         PutItems:
           Type: Api
           Properties:
-            Path: /items/
+            Path: /items
             Method: put
-  DeleteItemFunction:
+  DeleteFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: handler.deleteItem
@@ -37,6 +39,7 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Timeout: 10
       MemorySize: 128
+      CodeUri: ./
       Events:
         DeleteItems:
           Type: Api
