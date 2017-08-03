@@ -6,6 +6,10 @@ Parameters:
   CodeKey:
     Type: String
 Resources:
+  GetFunction_Version:
+    Type: AWS::Lambda::Version
+    Properties:
+      FunctionName: !Ref GetFunction
   GetFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
@@ -26,6 +30,10 @@ Resources:
           Properties:
             Path: /items
             Method: get
+  SaveFunction_Version:
+    Type: AWS::Lambda::Version
+    Properties:
+      FunctionName: !Ref SaveFunction
   SaveFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -46,6 +54,10 @@ Resources:
           Properties:
             Path: /items
             Method: put
+  DeleteFunction_Version:
+    Type: AWS::Lambda::Version
+    Properties:
+      FunctionName: !Ref DeleteFunction
   DeleteFunction:
     Type: AWS::Serverless::Function
     Properties:
