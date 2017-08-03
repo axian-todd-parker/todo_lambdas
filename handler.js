@@ -51,6 +51,8 @@ module.exports.saveItem = (event, context, callback) => {
     });
   }
 
+  console.log(event.body);
+
   var item = JSON.parse(event.body);
 
   var db = dynamodb.doc;
