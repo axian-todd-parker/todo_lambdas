@@ -3,7 +3,7 @@ version:  0.2
 phases:
   pre_build:
     commands:
-      - npm install --production
+      - npm install serverless-dynamodb-client
 artifacts:
   files:
     - handler.js
