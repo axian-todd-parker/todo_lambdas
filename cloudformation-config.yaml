@@ -17,6 +17,9 @@ Resources:
         Bucket: !Ref BucketName
         Key: !Ref CodeKey
       Policies: AmazonDynamoDBReadOnlyAccess
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref item
       Events:
         GetItems:
           Type: Api
@@ -31,6 +34,9 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Timeout: 10
       MemorySize: 128
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref item
       CodeUri:
         Bucket: !Ref BucketName
         Key: !Ref CodeKey
@@ -48,6 +54,9 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Timeout: 10
       MemorySize: 128
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref item
       CodeUri:
         Bucket: !Ref BucketName
         Key: !Ref CodeKey

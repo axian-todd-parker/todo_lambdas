@@ -2,6 +2,7 @@
 
 var aws = require("aws-sdk");
 var dynamodb = require('serverless-dynamodb-client');
+var tableName = process.env.TABLE_NAME;
 
 module.exports.getItems = (event, context, callback) => {
 
@@ -19,7 +20,7 @@ module.exports.getItems = (event, context, callback) => {
   // console.log('user_uid: ' + user_uid)
 
   var params = {
-    TableName: "item",
+    TableName: tableName,
     FilterExpression:"user_uid = :user_uid",
     ExpressionAttributeValues:{":user_uid": user_uid }
   };
@@ -59,7 +60,7 @@ module.exports.saveItem = (event, context, callback) => {
 
   var uid = createGuid();
   var params = {
-    TableName: "item",
+    TableName: tableName,
     Item: {
       title:item.title,
       completed:false,
@@ -89,7 +90,7 @@ module.exports.deleteItem = (event, context, callback) => {
   var db = dynamodb.doc;
 
   var params = {
-    TableName: "item",
+    TableName: tableName,
     Key:{
       uid:event.pathParameters.uid
     }
