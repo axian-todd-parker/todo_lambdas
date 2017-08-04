@@ -4,12 +4,8 @@ phases:
   pre_build:
     commands:
       - npm install serverless-dynamodb-client
-  build:
-    commands:
-      - gulp build
-  post_build:
-    commands:
-      - "aws cloudformation package --template-file cloudformation-config.yml --output-template-file cloudformation-config.yml --s3-bucket \"$S3_BUCKET_ARTIFACTS\" --s3-prefix `echo $CODEBUILD_BUILD_ID | tr : /`"
 artifacts:
   files:
+    - handler.js
+    - node_modules/serverless-dynamodb-client/index.js
     - cloudformation-config.yaml

@@ -6,7 +6,7 @@ Parameters:
   CodeKey:
     Type: String
 Resources:
-  GetFunction_Version:
+  VersionGetFunction:
     Type: AWS::Lambda::Version
     Properties:
       FunctionName: !Ref GetFunction
@@ -30,7 +30,7 @@ Resources:
           Properties:
             Path: /items
             Method: get
-  SaveFunction_Version:
+  VersionSaveFunction:
     Type: AWS::Lambda::Version
     Properties:
       FunctionName: !Ref SaveFunction
@@ -54,7 +54,7 @@ Resources:
           Properties:
             Path: /items
             Method: put
-  DeleteFunction_Version:
+  VersionDeleteFunction:
     Type: AWS::Lambda::Version
     Properties:
       FunctionName: !Ref DeleteFunction
