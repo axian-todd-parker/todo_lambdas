@@ -53,6 +53,7 @@ module.exports.saveItem = (event, context, callback) => {
   }
 
   //console.log(event.body);
+  console.log('I am a version!');
 
   var item = JSON.parse(event.body);
 
