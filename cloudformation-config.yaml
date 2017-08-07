@@ -11,7 +11,7 @@ Resources:
     Properties:
       DefinitionUri:
         Bucket: !Ref BucketName
-        Key: CodeKey
+        Key: !Ref CodeKey
       StageName: Prod
   VersionGetFunction:
     Type: AWS::Lambda::Version
