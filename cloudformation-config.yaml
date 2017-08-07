@@ -9,8 +9,40 @@ Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
     Properties:
-      DefinitionUri: !Sub "s3://${BucketName}/${CodeKey}/swagger.yml"
       StageName: Prod
+      DefinitionBody:
+        swagger: "2.0"
+          info:
+            version: "1.0"
+            title: "todo-lambdas"
+          basePath: "/Prod"
+          schemes:
+          - "https"
+          paths:
+            /items:
+              get:
+                responses: {}
+                security:
+                - todo_auth_pool: []
+              put:
+                responses: {}
+                security:
+                - todo_auth_pool: []
+            /items/{uid}:
+              delete:
+                responses: {}
+                security:
+                - todo_auth_pool: []
+          securityDefinitions:
+            todo_auth_pool:
+              type: "apiKey"
+              name: "Authorization"
+              in: "header"
+              x-amazon-apigateway-authtype: "cognito_user_pools"
+              x-amazon-apigateway-authorizer:
+                type: cognito_user_pools
+                providerARNs:
+                  - arn:aws:cognito-idp:us-west-2:266882346412:userpool/us-west-2_7HKgm1tIC
   VersionGetFunction:
     Type: AWS::Lambda::Version
     Properties:
