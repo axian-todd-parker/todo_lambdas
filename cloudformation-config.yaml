@@ -30,6 +30,7 @@ Resources:
                   default:
                     statusCode: 200
                 passthroughBehavior: when_no_match
+                httpMethod: GET
             put:
               responses: {}
               security:
@@ -40,6 +41,7 @@ Resources:
                   default:
                     statusCode: 200
                 passthroughBehavior: when_no_match
+                httpMethod: PUT
           /items/{uid}:
             delete:
               responses: {}
@@ -51,6 +53,7 @@ Resources:
                   default:
                     statusCode: 200
                 passthroughBehavior: when_no_match
+                httpMethod: DELETE
         securityDefinitions:
           todo_auth_pool:
             type: apiKey
