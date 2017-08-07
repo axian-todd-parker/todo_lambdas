@@ -1,0 +1,30 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: "todo-lambdas"
+host: "v9u4dkvq4e.execute-api.us-west-2.amazonaws.com"
+basePath: "/Prod"
+schemes:
+- "https"
+paths:
+  /items:
+    get:
+      responses: {}
+      security:
+      - todo_auth_pool: []
+    put:
+      responses: {}
+      security:
+      - todo_auth_pool: []
+  /items/{uid}:
+    delete:
+      responses: {}
+      security:
+      - todo_auth_pool: []
+securityDefinitions:
+  todo_auth_pool:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+    x-amazon-apigateway-authtype: "cognito_user_pools"

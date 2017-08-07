@@ -9,3 +9,4 @@ artifacts:
     - handler.js
     - node_modules/serverless-dynamodb-client/index.js
     - cloudformation-config.yaml
+    - swagger.yaml
