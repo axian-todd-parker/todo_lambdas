@@ -6,14 +6,13 @@ Parameters:
   CodeKey:
     Type: String
 Resources:
-  # ApiGatewayApi:
-  #   Type: AWS::Serverless::Api
-  #   Properties:
-  #     DefinitionUri:
-  #       Bucket: !Ref BucketName
-  #       Key: CodeKey
-  #     StageName: Prod
-
+  ApiGatewayApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      DefinitionUri:
+        Bucket: !Ref BucketName
+        Key: CodeKey
+      StageName: Prod
   VersionGetFunction:
     Type: AWS::Lambda::Version
     Properties:
@@ -36,6 +35,7 @@ Resources:
         GetItems:
           Type: Api
           Properties:
+            RestApiId: !Ref ApiGatewayApi
             Path: /items
             Method: get
   VersionSaveFunction:
@@ -60,6 +60,7 @@ Resources:
         PutItems:
           Type: Api
           Properties:
+            RestApiId: !Ref ApiGatewayApi
             Path: /items
             Method: put
   VersionDeleteFunction:
@@ -84,6 +85,7 @@ Resources:
         DeleteItems:
           Type: Api
           Properties:
+            RestApiId: !Ref ApiGatewayApi
             Path: /items/{uid}
             Method: delete
   item:
