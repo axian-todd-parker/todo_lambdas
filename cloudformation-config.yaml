@@ -8,6 +8,7 @@ Parameters:
 Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
+    StageName: Prod
     Properties:
       DefinitionUri: !Sub "s3://${BucketName}/${CodeKey}/swagger.yml"
   VersionGetFunction:
