@@ -3,7 +3,6 @@ swagger: "2.0"
 info:
   version: "1.0"
   title: "todo-lambdas"
-host: "v9u4dkvq4e.execute-api.us-west-2.amazonaws.com"
 basePath: "/Prod"
 schemes:
 - "https"
