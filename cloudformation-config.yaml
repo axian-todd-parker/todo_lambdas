@@ -21,7 +21,9 @@ Resources:
         paths:
           /items:
             get:
-              responses: {}
+              responses:
+                200:
+                  description: 200 response
               security:
                 - todo_auth_pool: []
               x-amazon-apigateway-integration:
@@ -31,7 +33,9 @@ Resources:
                     statusCode: 200
                 httpMethod: GET
             put:
-              responses: {}
+              responses: 
+                200:
+                  description: 200 response
               security:
                 - todo_auth_pool: []
               x-amazon-apigateway-integration:
@@ -42,7 +46,9 @@ Resources:
                 httpMethod: PUT
           /items/{uid}:
             delete:
-              responses: {}
+              responses: 
+                200:
+                  description: 200 response
               security:
                 - todo_auth_pool: []
               x-amazon-apigateway-integration:
