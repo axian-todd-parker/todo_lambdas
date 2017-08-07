@@ -6,13 +6,13 @@ Parameters:
   CodeKey:
     Type: String
 Resources:
-  ApiGatewayApi:
-    Type: AWS::Serverless::Api
-    Properties:
-      DefinitionUri:
-        Bucket: !Ref BucketName
-        Key: CodeKey
-      StageName: Prod
+  # ApiGatewayApi:
+  #   Type: AWS::Serverless::Api
+  #   Properties:
+  #     DefinitionUri:
+  #       Bucket: !Ref BucketName
+  #       Key: CodeKey
+  #     StageName: Prod
 
   VersionGetFunction:
     Type: AWS::Lambda::Version
