@@ -9,9 +9,7 @@ Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
     Properties:
-      DefinitionUri: !Sub s3://${BucketName}/${CodeKey}/swagger.yml
-        Bucket: !Ref BucketName
-        Key: !Ref CodeKey
+      DefinitionUri: !Sub "s3://${BucketName}/${CodeKey}/swagger.yml"
   VersionGetFunction:
     Type: AWS::Lambda::Version
     Properties:
