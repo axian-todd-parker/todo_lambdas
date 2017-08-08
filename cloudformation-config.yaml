@@ -22,7 +22,7 @@ Resources:
           /items:
             get:
               responses:
-                200:
+                "200":
                   description: 200 response
               security:
                 - todo_auth_pool: []
@@ -34,7 +34,7 @@ Resources:
                 httpMethod: GET
             put:
               responses: 
-                200:
+                "200":
                   description: 200 response
               security:
                 - todo_auth_pool: []
@@ -47,7 +47,7 @@ Resources:
           /items/{uid}:
             delete:
               responses: 
-                200:
+                "200":
                   description: 200 response
               security:
                 - todo_auth_pool: []
