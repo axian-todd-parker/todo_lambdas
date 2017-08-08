@@ -32,6 +32,7 @@ Resources:
                   default:
                     statusCode: 200
                 httpMethod: GET
+                uri: arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:266882346412:function:${GetFunction}/invocations
             put:
               responses: 
                 "200":
@@ -44,6 +45,7 @@ Resources:
                   default:
                     statusCode: 200
                 httpMethod: PUT
+                uri: arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:266882346412:function:${SaveFunction}/invocations
           /items/{uid}:
             delete:
               responses: 
@@ -57,6 +59,7 @@ Resources:
                   default:
                     statusCode: 200
                 httpMethod: DELETE
+                uri: arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:266882346412:function:${DeleteFunction}/invocations
         securityDefinitions:
           todo_auth_pool:
             type: apiKey
